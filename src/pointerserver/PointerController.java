@@ -3,9 +3,10 @@ package pointerserver;
 import java.util.ArrayList;
 
 import device.PointerDevice;
-import processing.core.PApplet;
 
-public class PointerController {
+import java.util.TimerTask;
+
+public class PointerController extends TimerTask {
 	
 	protected static ArrayList<PointerDevice> pointers;
 	protected static ArrayList<PointerDevice> needsUpdate;
@@ -14,6 +15,10 @@ public class PointerController {
 		pointers = new ArrayList<PointerDevice>();
 	}
 	
+    @Override
+    public void run() {
+        System.out.println("Update pointers");
+    }
 	
 	public PointerDevice addPointer(int i){
 		PointerDevice p = new PointerDevice();

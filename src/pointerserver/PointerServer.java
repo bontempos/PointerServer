@@ -16,6 +16,9 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import pointerserver.RequestHandler;
 
 public class PointerServer {
@@ -48,6 +51,10 @@ PointerController pc;
 	
 	public static void main(String _args[]) {
         try {
+            System.out.println("Starting Pointer Controller");
+            TimerTask pointerUpdateTask = new PointerController();
+            Timer timer = new Timer(true);
+            timer.scheduleAtFixedRate(pointerUpdateTask, 0, 1000);
             System.out.println("Starting Pointer Server");
             PointerServer app = new PointerServer(9540);
             app.listen();
