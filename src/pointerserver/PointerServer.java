@@ -16,11 +16,13 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import pointerserver.RequestHandler;
+
 public class PointerServer {
 	
 	// Act act;
 	public SerialControl sc;
-	PointerController pc;
+PointerController pc;
 	GUIControl gui;
 
 
@@ -34,17 +36,12 @@ public class PointerServer {
 
     private void listen() throws Exception {
             System.out.println("Listening on " + this.port);
-            String data = null;
-            Socket client = this.server.accept();
-            String clientAddress = client.getInetAddress().getHostAddress();
-            System.out.println("\r\nNew connection from " + clientAddress);
-
-            BufferedReader in = new BufferedReader(
-                            new InputStreamReader(client.getInputStream())
-            );        
-            while ( (data = in.readLine()) != null  ) {
-                    System.out.println("\r\nMessage from " + clientAddress + ": " + data);
-                            
+            while (true) {
+                Socket client = this.server.accept();
+                String clientAddress = client.getInetAddress().getHostAddress();
+                System.out.println("\r\nNew connection from " + clientAddress);
+                RequestHandler requestHandler = new RequestHandler(client);
+                requestHandler.start();
             }
     }
 
