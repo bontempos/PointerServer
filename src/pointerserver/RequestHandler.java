@@ -10,6 +10,8 @@ import java.net.Socket;
 class RequestHandler extends Thread
 {
     private Socket socket;
+    private int packetCount = 0;
+
     RequestHandler( Socket socket )
     {
         this.socket = socket;
@@ -30,8 +32,10 @@ class RequestHandler extends Thread
                 int bytesRead = input.read(buffer);
                 if (bytesRead < 0) {
                     done = true;
+                } else {
+                   this.packetCount++;   
+                   System.out.println("Read " + bytesRead + " bytes (Packet count: " + this.packetCount + ")" );
                 }
-                System.out.println("Read " + bytesRead + " bytes");
             }
 
             // Close our connection
