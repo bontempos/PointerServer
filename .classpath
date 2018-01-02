@@ -128,40 +128,35 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/user/controlP5/controlP5.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/controlP5/src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/controlP5"/>
 			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/controlP5/reference/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="lib/user/Game/Game.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/Game/src">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/Game"/>
-			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/Game/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/controlP5"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/user/opencv_processing/opencv-245.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/opencv_processing/src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/opencv_processing"/>
 			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/opencv_processing/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/opencv_processing"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/user/opencv_processing/opencv_processing.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/opencv_processing/src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/opencv_processing"/>
 			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/opencv_processing/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/opencv_processing"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/user/ProjectionMatrix/Jama-1.0.3.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/ProjectionMatrix/src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/ProjectionMatrix"/>
 			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/ProjectionMatrix/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/ProjectionMatrix"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/user/ProjectionMatrix/ProjectionMatrix.jar" sourcepath="/Users/tomyken/Documents/Processing/libraries/ProjectionMatrix/src">
 		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/ProjectionMatrix"/>
 			<attribute name="javadoc_location" value="file:/Users/tomyken/Documents/Processing/libraries/ProjectionMatrix/reference/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="PointerServer/lib/user/ProjectionMatrix"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/tomyken/Documents/Processing/libraries/Game/library/Game.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -10,12 +10,13 @@ public class PointerServo {
 	
 	int angle;
 	int previousAngle;
-	boolean busy;
-	PointerDevice pointer;
 
-	public PointerServo( PointerDevice pointer) {
-		this.pointer = pointer;
-		angle = 90;
+	PointerServoController controller;
+
+	public PointerServo( PointerServoController controller) {
+		this.controller = controller;
+	    angle = initialAngle;
+		 
 	}
 	
 	public void setAngularSpeed( float speed ){
@@ -30,10 +31,6 @@ public class PointerServo {
 		range = new int[]{min, max};
 	}
 	
-	public void setBusy(boolean bool){
-		this.busy = bool;
-	}
-
 	public void setAngle(int angle){
 		this.angle = angle;
 	}
@@ -46,15 +43,18 @@ public class PointerServo {
 		this.previousAngle = previousAngle;
 	}
 
-	public boolean isBusy(){
-		return busy;
+	/**
+	 * @return the angularSpeed
+	 */
+	public float getAngularSpeed() {
+		return angularSpeed;
 	}
-	
+
 	public int getAngle(){
 		return angle;
 	}
 	
-	public double getAngleNorm(){
+	public float getAngleNorm(){
 		return normalize(angle, range[0], range[1]);
 	}
 
@@ -67,19 +67,18 @@ public class PointerServo {
 	}
 
 	
-	
-	public double normalize(int value, int min, int max) {
+	public float normalize(int value, int min, int max) {
 		return (value - min) / (max - min);
 	}
 	
 	public void update(){
 		if(angle != previousAngle){
-			PointerController.setNeedsUpdate(pointer);
-			setBusy(true);
-			previousAngle = angle;
+			PointerController.setNeedsUpdate(controller.parentPointer);
+			controller.setOnMove(true);
 		}else{
-			if(isBusy())setBusy(false);
+			if(controller.isOnMove())controller.setOnMove(false);
 		}
+		previousAngle = angle;
 	}
 
 }
