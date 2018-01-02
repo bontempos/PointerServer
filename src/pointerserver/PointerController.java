@@ -7,12 +7,10 @@ import processing.core.PApplet;
 
 public class PointerController {
 	
-	PApplet parent;
 	protected static ArrayList<PointerDevice> pointers;
 	protected static ArrayList<PointerDevice> needsUpdate;
 	
-	public PointerController(PApplet parent) {
-		this.parent = parent;
+	public PointerController() {
 		pointers = new ArrayList<PointerDevice>();
 	}
 	

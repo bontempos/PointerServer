@@ -40,7 +40,7 @@
         <pathelement location="lib/user/opencv_processing/opencv_processing.jar"/>
         <pathelement location="lib/user/ProjectionMatrix/Jama-1.0.3.jar"/>
         <pathelement location="lib/user/ProjectionMatrix/ProjectionMatrix.jar"/>
-        <pathelement location="../../Processing/libraries/Game/library/Game.jar"/>
+        <pathelement location="lib/user/Game/Game.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -83,18 +83,4 @@
             <classpath refid="PointerServer.classpath"/>
         </java>
     </target>
-              	<target name="war" description="Bundles the application as a WAR file" depends="clean, build">
-              	    <mkdir dir="WebContent/WEB-INF/classes"/>
-              	     
-              	    <copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
-              	            <fileset dir="build/classes">
-              	            <include name="**/*.class"/>
-              	            </fileset>
-              	    </copy>
-              	     
-              	    <war destfile="UploadServlet30.war"
-              	        basedir="WebContent"
-              	        needxmlfile="false">
-              	    </war>
-              	</target>
 </project>

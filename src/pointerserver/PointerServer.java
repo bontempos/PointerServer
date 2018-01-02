@@ -8,37 +8,64 @@ import java.util.concurrent.TimeUnit;
 import bontempos.Game.Act.Act;
 import device.Microcontroller;
 import gui.GUIControl;
-import processing.core.PApplet;
 import processing.serial.Serial;
 
-public class PointerServer extends PApplet {
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class PointerServer {
 	
-	Act act;
+	// Act act;
 	public SerialControl sc;
 	PointerController pc;
 	GUIControl gui;
 
 
+    private ServerSocket server;
+    private int port;
+
+    public PointerServer(int port) throws Exception {
+        this.port = port;
+        this.server = new ServerSocket(port);
+    }
+
+    private void listen() throws Exception {
+            System.out.println("Listening on " + this.port);
+            String data = null;
+            Socket client = this.server.accept();
+            String clientAddress = client.getInetAddress().getHostAddress();
+            System.out.println("\r\nNew connection from " + clientAddress);
+
+            BufferedReader in = new BufferedReader(
+                            new InputStreamReader(client.getInputStream())
+            );        
+            while ( (data = in.readLine()) != null  ) {
+                    System.out.println("\r\nMessage from " + clientAddress + ": " + data);
+                            
+            }
+    }
+
 	
 	public static void main(String _args[]) {
-		PApplet.main(new String[] { pointerserver.PointerServer.class.getName() });
+        try {
+            System.out.println("Starting Pointer Server");
+            PointerServer app = new PointerServer(9540);
+            app.listen();
+        }
+        catch (Exception e) {
+            System.out.println("Server exception! " + e);
+        }
 	}
 	
-	public void settings(){
-		size(600,300,P2D);
-	}
-
 	public void setup() {
-		act = new Act(this);
-		pc = new PointerController(this);
-		gui = new GUIControl(this);
-		sc = new SerialControl(this);
+		//act = new Act(this);
+		pc = new PointerController();
+		sc = new SerialControl();
 	}
 
-	public void draw() {
-		background(180);
-	}
-	
 	public void serialEvent( Serial port ){
 		sc.serialRead();
 	}

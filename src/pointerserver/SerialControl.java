@@ -44,9 +44,8 @@ public class SerialControl {
 
 
 
-	public SerialControl(PApplet parent) {
-		this.parent = parent;
-		parent.registerMethod("pre", this);
+	public SerialControl() {
+		//parent.registerMethod("pre", this);
 		mc = new Microcontroller(this);
 		queue = new ArrayList<byte[]>();
 		serialInit( Serial.list()[1], baudRate);
@@ -112,10 +111,6 @@ public class SerialControl {
 
 	int testX = 102;
 
-	int testRand (){
-		return (int) parent.constrain(  (parent.random(1f)>.5)?testX+10:testX-10, 0,180 );
-	}
-
 	public void executePointerCommands(){
 		//will execute update for all pointers if their trajectory arraylists have any trajectory fragment to perform.
 
@@ -168,7 +163,10 @@ public class SerialControl {
 	}
 
 
-
+    int testRand (){
+        //return (int) parent.constrain(  (parent.random(1f)>.5)?testX+10:testX-10, 0,180 );
+        return 1;
+    }
 
 	/*
 	 *  SEND an array of bytes to serial
@@ -179,11 +177,11 @@ public class SerialControl {
 			//(first byte is the byteSize, than for each pointer: index, laser, servoX, servoY)
 			if(printToConsole){
 				if(i == 0){
-					sentCommandsSpan[0] = parent.millis();
+					//sentCommandsSpan[0] = parent.millis();
 				}else if(i == serialPackage.length - 1){
-					sentCommandsSpan[1] = parent.millis();
+					//sentCommandsSpan[1] = parent.millis();
 				}
-				serialOutput += "OUT>> ("+ millisToSec( parent.millis() ) +" : "+i+") serial package:" + serialPackage[i] + "\n";
+				//serialOutput += "OUT>> ("+ millisToSec( parent.millis() ) +" : "+i+") serial package:" + serialPackage[i] + "\n";
 			}
 			serial.write(serialPackage[i]);
 		}
@@ -209,8 +207,8 @@ public class SerialControl {
 				if(serialReply.startsWith("EEPROM")){
 					mc.getDataFromEEPROM( serialReply );
 				}
-				System.out.print( " >>IN " + parent.millis() + ":" + serialReply);
-				serialInput +=  " >>IN " + millisToSec( parent.millis() ) + ":" + serialReply;
+				//System.out.print( " >>IN " + parent.millis() + ":" + serialReply);
+				//serialInput +=  " >>IN " + millisToSec( parent.millis() ) + ":" + serialReply;
 				if(printToConsole){
 					GUIControl.updateConsole( "consoleIn", serialInput );
 				}
